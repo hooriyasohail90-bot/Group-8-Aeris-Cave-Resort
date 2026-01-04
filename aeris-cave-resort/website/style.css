@@ -1,0 +1,302 @@
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
+
+:root {
+   
+     /* font-families */
+   --heading-font: "Playfair Display", serif;
+   --body-font: 'Montserrat', sans-serif;
+
+    /* font-sizes */
+    --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+    --fs-800: 3.5rem;
+    --fs-700: 1.5rem;
+    --fs-600: 1rem;
+    --fs-500: 1.05rem;
+    --fs-400: 0.9375rem;
+    --fs-300: 1rem;
+    --fs-200: 0.875rem;
+    
+   
+    /* Main Colors */
+  --orange-primary-color: 16 100% 60%;
+  --orange-secondary-color: 12 100% 76%;   /* #FF9B85 */
+  --dark-text: 210 29% 24%;                 /* #2c3e50 */
+  --light-text: 0 0% 96%;                   /* #f4f4f4 */
+
+  /* Do not use these colors alot */
+  --blue-1-color: 213 72% 59%;             /* #4A90E2 */
+  --blue-2-color: 180 43% 62%;             /* #78C5C5 */
+  --green-color: 127 17% 42%;              /* #5A7C5E */
+  --yellow-color: 36 100% 64%;              /* #FFB347 */
+}
+
+
+
+
+@media (min-width: 35em) {
+    :root {
+        --fs-800: 5rem;
+        --fs-700: 2.5rem;
+        --fs-600: 1.5rem;
+         --fs-500: 1.25rem;
+        --fs-400: 1rem;
+    }
+}
+
+@media (min-width: 45em) {
+    :root {
+        /* font-sizes */
+        --fs-800: 6.25rem;
+        --fs-700: 3.5rem;
+        --fs-600: 2rem;
+        --fs-500: 1.75rem;
+        --fs-400: 1.125rem;
+    }
+}
+.body{
+  background-color: var(--orange-primary-color);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+/* NAV */
+.navigation {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 50px;
+  backdrop-filter: blur(20px);
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 1000;
+}
+.navigation img {
+  height: 60px;
+  width: 60px;
+}
+.navigation ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+.navigation a:hover{
+  color: hsl(var(--orange-primary-color));
+}
+.navigation a {
+  text-decoration: none;
+  color: white;
+  font-family: var(--body-font);
+  font-size: var(--fs-200);
+  padding: 10px 15px;
+}
+.navigation .active a{
+  color: white;
+  font-weight: bold;
+}
+/* HERO */
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* TEXT ON VIDEO */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--heading-font);
+}
+.hero-content h1{
+  font-size: var(--fs-900);
+  margin-bottom: 20px;
+  font-weight: lighter;
+}
+.home-page .hero-content h1:hover{
+  -webkit-text-stroke: 2px white;
+   color: transparent;
+}
+/* BUTTON */
+.btn {
+  font-family: var(--body-font);
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: #C96A4A;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+}
+.btn:hover {
+  background: hsl(var(--orange-primary-color));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Styling for The Hotel Section */
+.The-Hotel {
+  background-color: hsl(var(--orange-primary-color)/.9);
+  color: var(--light-text);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px; /* Space between the elements */
+  padding: 4%;
+  align-items: center; /* Vertically centers the text relative to the tall images */
+}
+.hotel-image img {
+  width: 100%;
+  /* Set a fixed aspect ratio or height to make them long */
+  height: 700px; 
+  object-fit: cover; /* Prevents the image from stretching */
+  border-radius: 20px; /* To match the rounded look in your ref */
+}
+.hotel-body h2 {
+  font-family: var(--heading-font);
+  font-size: var(--fs-700);
+  margin-bottom: 20px;
+}
+.hotel-body p {
+  font-family: var(--body-font);
+  font-size: var(--fs-400);
+  line-height: 1.5rem;
+}
+/* REUSABLE ANIMATION CLASS FOR TEXT */
+.autoShow
+{
+  animation: text-appear both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 100vh;
+}
+@keyframes text-appear {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* REUSABLE ANIMATION CLASS  FOR IMAGES*/
+.scroll-reveal {
+  /* 1. Set up the individual timeline for the element */
+  view-timeline-name: --element-reveal;
+  view-timeline-axis: block;
+
+  /* 2. Initial state (Hidden/Small) */
+  opacity: 0;
+  transform: scale(0.8);
+  
+  /* 3. Link the animation */
+  animation: reveal-grow linear forwards;
+  animation-timeline: view();
+  animation-range: entry 20% cover 100vh;
+  
+  /* 4. Define when it happens (entry into viewport) 
+  animation-range: entry 10% entry 60%; */
+}
+
+@keyframes reveal-grow {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+}
+
+.image-reveal
+{
+  animation: imageReveal both;
+  animation-timeline: view(50% 20%);
+}
+@keyframes imageReveal {
+  from {
+    filter: saturate(0) contrast(4) brightness(.1) blur(5px);
+    opacity: 0;
+    scale: .95;
+    transalte: 0 4rem;
+  }
+  to {
+    filter: none;
+    opacity: 1;
+    scale: 1;
+    transalte: 0 0;
+  }
+}
+
+/* Rooms Page */
+.rooms-page .hero-image {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+/* TEXT ON IMAGE */
+.rooms-page .hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: left;
+  top: 70%;
+  font-family: var(--heading-font);
+  padding: 0% 20% 0% 5%;
+}
+.rooms-page .hero-content h1{
+  font-size: var(--fs-700);
+  margin-bottom: 20px;
+}
+.rooms-page .hero-content p{
+  font-family: var(--body-font);
+  font-size: var(--fs-400);
+  margin-bottom: 20px;
+}
+
+/* Packages Page */
+.packages-page .next-section
+{
+  background-color: hsl(var(--blue-2-color));
+}
+
+/* Experiences Page */
+.experiences-page
+{
+  background-color: hsl(var(--orange-secondary-color));
+}
+
+/* Contact Page */
+.contact-page
+{
+  background-color: hsl(var(--orange-secondary-color));
+}
