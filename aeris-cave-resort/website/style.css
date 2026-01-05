@@ -24,12 +24,7 @@
   --orange-secondary-color: 25 76% 31%;   /* #8B4513 */
   --dark-text: 210 29% 15%;                 /* #2c3e50 */
   --light-text: 0 0% 96%;                   /* #f4f4f4 */
-
-  /* Do not use these colors alot */
-  --blue-1-color: 213 72% 59%;             /* #4A90E2 */
-  --blue-2-color: 180 43% 62%;             /* #78C5C5 */
-  --green-color: 127 17% 42%;              /* #5A7C5E */
-  --yellow-color: 36 100% 64%;              /* #FFB347 */
+  --blue-1-color: 180 57% 45%;             /* #32b4b4 */
 }
 
 
@@ -506,9 +501,7 @@ nav ul li a:hover {
   overflow: hidden;
   border-radius: 14px;
 }
-.room-carousel::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
+
 .carousel-track {
   display: flex;
   transition: transform 0.6s ease;
@@ -1247,7 +1240,13 @@ font-size: 28px;
 }
   }
 .booking-box { 
-    grid-area: book; 
+    grid-area: book;
+}
+.booking-box h2{ 
+  color: hsl(var(--orange-primary-color)/0.8); font-size:var(--fs-700); margin-bottom: 20px;   
+}
+.booking-box h5{ 
+  color: hsl(var(--blue-1-color));  
 }
 
 .right-text { 
